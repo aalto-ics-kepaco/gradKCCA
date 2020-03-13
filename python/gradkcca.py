@@ -105,25 +105,6 @@ class GradKCCA:
         gradient = ((((((t_15 * (t_7 * u)) - (t_13 * (t_7 * t_14))) - (t_13 * (t_16 * t_14))) + (t_15 * (t_16 * u))) + ((t_17 / t_3) * (X.T).dot(t_18))) - ((((2 * t_17) / t_3) * np.sum(t_18)) * u))  
         return gradient
     
-#        t_0 = (4 * (s ** 2))
-#        t_1 = (1 / t_0)
-#        t_2 = np.exp((((t_1 * (X).dot(u)) - (t_1 * x)) - (((np.linalg.norm(u) ** 2) / t_0) * np.ones(X_rows))))
-#        t_3 = (1 / 2)
-#        t_4 = -t_3
-#        t_5 = (t_2).dot(t_2)
-#        t_6 = ((k).dot(k) ** t_4)
-#        t_7 = (t_2).dot(k)
-#        t_8 = ((t_5 ** -(1 + t_3)) * t_6)
-#        t_9 = (t_2 * t_2)
-#        t_10 = (t_8 / (t_0 * 2))
-#        t_11 = (X.T).dot(t_9)
-#        t_12 = ((t_8 / t_0) * np.sum(t_9))
-#        t_13 = (k).dot(t_2)
-#        t_14 = ((t_5 ** t_4) * t_6)
-#        t_15 = (k * t_2)
-#        #functionValue = (t_14 * t_7)
-#        gradient = ((((((t_12 * (t_7 * u)) - (t_10 * (t_7 * t_11))) - (t_10 * (t_13 * t_11))) + (t_12 * (t_13 * u))) + ((t_14 / t_0) * (X.T).dot(t_15))) - ((((2 * t_14) / t_0) * np.sum(t_15)) * u))  
-#        return gradient
      
     def backracking_line_search(self, w, gw, stp, X, K, obj_old): 
         while True:                      
