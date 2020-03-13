@@ -1,6 +1,6 @@
 # Large-Scale Sparse Kernel Canonical Correlation Analysis
 
-This repository contains the MATLAB codes applied in [1].
+The matlab folder contains the MATLAB codes applied in [1]. The python folder contains the python version of gradKCCA together with examples to simulate data.
 
 ## Real Datasets
 
