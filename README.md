@@ -17,5 +17,7 @@ The matlab folder contains the MATLAB codes applied in [1]. The python folder co
 
 ## Reference
 
-Uurtio, V., Bhadra, S., Rousu, J. Large-Scale Sparse Kernel Canonical Correlation Analysis. 
-International Conference on Machine Learning (ICML 2019), to appear
+Viivi Uurtio, Sahely Bhadra, and Juho Rousu. Large-scale sparse kernel canonical correlation analysis. In Kamalika
+Chaudhuri and Ruslan Salakhutdinov, editors, Proceedings of the 36th International Conference on Machine Learning,
+volume 97 of Proceedings of Machine Learning Research, pages 6383–6391, Long Beach, California, USA, 09–15 Jun
+2019. PMLR.
