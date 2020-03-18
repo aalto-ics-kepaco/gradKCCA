@@ -135,7 +135,7 @@ class GradKCCA:
             return v     
         u = -np.sort(-np.abs(v))
         sv = np.cumsum(u)
-        r = np.where(u > (sv - b) / np.arange(u.shape[0]))
+        r = np.where(u > (sv - b) / np.arange(1,u.shape[0]+1))
         if len(r[-1]) > 0:
             #print("not empty")
             rho = r[-1][-1]
