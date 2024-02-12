@@ -24,7 +24,7 @@ volume 97 of Proceedings of Machine Learning Research, pages 6383–6391, Long B
 
 
 
-## Update on February 2024
+### Update on February 2024
 Fixed a few small bugs:
 - **Matlab**: added centering after kernel evaluations
 - **Python**: 
