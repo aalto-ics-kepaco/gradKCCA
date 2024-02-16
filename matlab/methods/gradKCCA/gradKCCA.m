@@ -38,6 +38,7 @@ maxit = 600;
 r = 0;
 InterMediate=[];
 for m=1:M
+    disp(['Component ', num2str(m), ':'])
     for rep=1:Rep
         if normtypeX == 1
             umr = projL1(rand(dx,1),Cx);
@@ -54,13 +55,13 @@ for m=1:M
         
         Ku = polyK(Xm, umr, degree1);
         Kv = polyK(Ym,vmr,degree2);
-        cKu = Ku;
-        cKv = Kv;
+        cKu = zscore(Ku);
+        cKv = zscore(Kv);
         diff = 999999;
         ite = 0;
         while diff > eps && ite < maxit
             ite = ite + 1;
-            obj_old = f_gkcca(Ku,cKv);
+            obj_old = f_gkcca(cKu,cKv);
             % GRADIENT
             gradu = gradf_poly(Xm, umr, r, degree1, cKv)';
             
@@ -76,13 +77,14 @@ for m=1:M
                 end
                 
                 [Ku_new,au_new] = polyK(Xm, umr_new, degree1);
-                obj_new = f_gkcca(Ku_new,cKv);
+                cKu_new = zscore(Ku_new);
+                obj_new = f_gkcca(cKu_new,cKv);
                 
                 if obj_new > obj_old + 1e-4 * abs(obj_old)
                     chk = 0;
                     umr = umr_new;
                     Ku = Ku_new;
-                    cKu = Ku;
+                    cKu = cKu_new;
                     au = au_new;
                     obj = obj_new;
                 else
@@ -110,7 +112,7 @@ for m=1:M
                     vmr_new  = projL2(vmr + gradv * gamma,Cy);
                 end
                 [Kv_new,av_new] = polyK(Ym, vmr_new,degree2);                
-                cKv_new = Kv_new;                
+                cKv_new = zscore(Kv_new);                
                 obj_new = f_gkcca(Ku,cKv_new);
                 if obj_new > obj_old + 1e-4*abs(obj_old)
                     chk = 0;
@@ -138,6 +140,7 @@ for m=1:M
         InterMediate(m,rep).Result.v = vmr;
         InterMediate(m,rep).Result.obj = obj;
         tempobj(rep) = obj;
+        disp(['rep = ', num2str(rep), ', ite = ', num2str(ite), ', obj = ',num2str(obj)])
     end
     
     [~,id] = max(tempobj);
@@ -146,10 +149,12 @@ for m=1:M
     final_obj(m,1) = max(tempobj);
     
     % deflated data
-    %Xm = Xm - (U(:,m)*U(:,m)'*Xm')';
-    %Ym = Ym - (V(:,m)*V(:,m)'*Ym')';
+    Xm = Xm - (U(:,m)*U(:,m)'*Xm')';
+    Ym = Ym - (V(:,m)*V(:,m)'*Ym')';
+
     
 end
+
 
 
 
